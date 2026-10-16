@@ -1,10 +1,5 @@
-import { partida } from './model';
-import { simulaQueHabriaPasado } from './motor';
 import {
-  botonPideCarta, botonPlantarse, botonNuevaPartida, botonHabriaPasado, muestraMensaje,
-  cambiarEstadoBoton, iniciarPartida, pideCarta,
-  plantarse, unaNuevaPartida,
-  queHabriaPasado,
+ botonPideCarta, botonPlantarse, botonNuevaPartida, botonHabriaPasado, iniciarPartida, pideCarta, plantarse, unaNuevaPartida, queHabriaPasado,
 } from './ui';
 
 
