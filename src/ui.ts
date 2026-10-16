@@ -1,5 +1,5 @@
 import { partida, PUNTUACION_MAXIMA } from './model';
-import { calculaPuntosCarta, obtenMensajeFinPartida, sumaPuntos, nuevaPartida } from './motor';
+import { calculaPuntosCarta, obtenMensajeFinPartida, sumaPuntos, nuevaPartida, dameCarta, mensajeEstado, simulaQueHabriaPasado } from './motor';
 
 const numeroPuntuacion = document.querySelector('.numero-puntuacion') as HTMLElement;
 
@@ -145,3 +145,26 @@ export const botonHabriaPasado = document.querySelector<HTMLButtonElement>('#bot
 
 
 
+export const pideCarta = () => {
+ const carta = dameCarta();
+ mostrarCarta(carta);
+ actualizarPuntuacion(carta);
+}
+
+export const plantarse = () => {
+  const estado = mensajeEstado(partida.puntuacion);
+      muestraMensaje(estado);
+      desactivarBotones();
+      cambiarEstadoBoton(botonHabriaPasado, false);
+}
+
+export const unaNuevaPartida = () => {
+  iniciarPartida();
+  activarBotones();
+}
+
+export const queHabriaPasado = () => {
+   const resultado = simulaQueHabriaPasado();
+      muestraMensaje(resultado);
+      cambiarEstadoBoton(botonHabriaPasado, true);
+}

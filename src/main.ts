@@ -1,26 +1,22 @@
 import { partida } from './model';
-import { dameCarta, mensajeEstado, simulaQueHabriaPasado } from './motor';
+import { simulaQueHabriaPasado } from './motor';
 import {
-  botonPideCarta, botonPlantarse, botonNuevaPartida, botonHabriaPasado,
-  mostrarCarta, actualizarPuntuacion, muestraMensaje,
-  cambiarEstadoBoton, desactivarBotones, activarBotones, iniciarPartida,
+  botonPideCarta, botonPlantarse, botonNuevaPartida, botonHabriaPasado, muestraMensaje,
+  cambiarEstadoBoton, iniciarPartida, pideCarta,
+  plantarse, unaNuevaPartida,
+  queHabriaPasado,
 } from './ui';
 
 
 
 if (botonPideCarta !== null && botonPideCarta !== undefined && botonPideCarta instanceof HTMLButtonElement) {
-  botonPideCarta.addEventListener('click', () => {const carta = dameCarta(); mostrarCarta(carta); actualizarPuntuacion(carta);});
+  botonPideCarta.addEventListener('click', () => { pideCarta(); });
 }
 
 
 
 if (botonPlantarse !== null && botonPlantarse !== undefined && botonPlantarse instanceof HTMLButtonElement) {
-  botonPlantarse.addEventListener('click', () => {
-    const estado = mensajeEstado(partida.puntuacion);
-    muestraMensaje(estado);
-    desactivarBotones();
-    cambiarEstadoBoton(botonHabriaPasado, false);
-  });
+  botonPlantarse.addEventListener('click', () => { plantarse(); });
 }
 
 
@@ -28,10 +24,7 @@ if (botonPlantarse !== null && botonPlantarse !== undefined && botonPlantarse in
 
 
 if (botonNuevaPartida !== null && botonNuevaPartida !== undefined && botonNuevaPartida instanceof HTMLButtonElement) {
-  botonNuevaPartida.addEventListener('click', () => {
-    iniciarPartida();
-    activarBotones();
-  });
+  botonNuevaPartida.addEventListener('click', () => { unaNuevaPartida();});
 }
 
 
@@ -39,11 +32,7 @@ if (botonNuevaPartida !== null && botonNuevaPartida !== undefined && botonNuevaP
 
 
 if (botonHabriaPasado !== null && botonHabriaPasado !== undefined && botonHabriaPasado instanceof HTMLButtonElement) {
-  botonHabriaPasado.addEventListener('click', () => {
-    const resultado = simulaQueHabriaPasado();
-    muestraMensaje(resultado);
-    cambiarEstadoBoton(botonHabriaPasado, true);
-  });
+  botonHabriaPasado.addEventListener('click', () => { queHabriaPasado(); });
 }
 
 
